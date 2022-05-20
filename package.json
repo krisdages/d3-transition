@@ -1,5 +1,5 @@
 {
-  "name": "d3-transition",
+  "name": "@krisdages/d3-transition",
   "version": "3.0.1",
   "description": "Animated transitions for D3 selections.",
   "homepage": "https://d3js.org/d3-transition/",
@@ -21,15 +21,16 @@
   },
   "type": "module",
   "files": [
-    "dist/**/*.js",
+    "dist",
     "src/**/*.js"
   ],
   "module": "src/index.js",
-  "main": "src/index.js",
+  "main": "dist/d3-transition.min.cjs",
   "jsdelivr": "dist/d3-transition.min.js",
   "unpkg": "dist/d3-transition.min.js",
   "exports": {
     "umd": "./dist/d3-transition.min.js",
+    "require": "./dist/d3-transition.min.cjs",
     "default": "./src/index.js"
   },
   "sideEffects": [
@@ -53,8 +54,7 @@
   },
   "scripts": {
     "test": "mocha 'test/**/*-test.js' && eslint src test",
-    "prepublishOnly": "rm -rf dist && yarn test && rollup -c && git push",
-    "postpublish": "git push --tags && cd ../d3.github.com && git pull && cp ../${npm_package_name}/dist/${npm_package_name}.js ${npm_package_name}.v${npm_package_version%%.*}.js && cp ../${npm_package_name}/dist/${npm_package_name}.min.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git add ${npm_package_name}.v${npm_package_version%%.*}.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git commit -m \"${npm_package_name} ${npm_package_version}\" && git push && cd -"
+    "prepublishOnly": "rm -rf dist && yarn test && rollup -c"
   },
   "engines": {
     "node": ">=12"
